@@ -28,13 +28,13 @@ int main() {
 }
 
 //파일 1의 정보를 가져오는 함수 작성
-void filestat1() //2018202054 김찬희
+void filestat1() //2018202054 김찬희 작성
 {
 	stat("text1", &stat1);
 }
 
 //파일 2의 정보를 가져오는 함수 작성
-void filestat2() //2018202054 김찬희
+void filestat2() //2018202054 김찬희 작성
 {
 	stat("text2", &stat2);
 }
@@ -50,7 +50,7 @@ void filetime2() {
 }
 
 //두 개의 파일 크기를 비교하는 함수 작성
-void sizecmp() //2018202054 김찬희
+void sizecmp() //2018202054 김찬희 작성
 {
 	printf("size compare\n");
 	if (stat1.st_size > stat2.st_size) {
@@ -70,7 +70,7 @@ void blockcmp() {
 }
 
 //두 개의 파일 수정 날짜를 비교하는 함수 작성
-void datecmp(void)//2018202054 김찬희
+void datecmp(void)//2018202054 김찬희 작성
 {
 	int t1_mon, t1_day, t2_mon, t2_day;
 	int t1_year, t2_year;
