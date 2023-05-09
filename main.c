@@ -39,14 +39,14 @@ void filestat2() //2018202054 김찬희 작성
 	stat("text2", &stat2);
 }
 
-//파일 1의 시간 정보를 가져오는 함수 작성
+//파일 1의 시간 정보를 가져오는 함수 작성 2017202042 성도형 작성
 void filetime1() {
-
+	time1 = localtime(&stat1.st_mtime);
 }
 
-//파일 2의 시간 정보를 가져오는 함수 작성
+//파일 2의 시간 정보를 가져오는 함수 작성 2017202042 성도형 작성
 void filetime2() {
-
+	time2 = localtime(&stat2.st_mtime);
 }
 
 //두 개의 파일 크기를 비교하는 함수 작성
@@ -64,9 +64,18 @@ void sizecmp() //2018202054 김찬희 작성
 	}
 }
 
-//두 개의 파일 블락 수를 비교하는 함수 작성
+//두 개의 파일 블락 수를 비교하는 함수 작성 2017202042 성도형 작성
 void blockcmp() {
-
+	printf("block compare\n");
+    if (stat1.st_blocks > stat2.st_blocks) {
+        printf("text 1 is bigger\n\n");
+    }
+    else if (stat1.st_blocks < stat2.st_blocks) {
+        printf("text 2 is bigger\n\n");
+    }
+    else {
+        printf("same number of blocks\n\n");
+    }
 }
 
 //두 개의 파일 수정 날짜를 비교하는 함수 작성
@@ -111,7 +120,24 @@ void datecmp(void)//2018202054 김찬희 작성
 	}
 }
 
-//두 개의 파일 수정 시간을 비교하는 함수 작성
+//두 개의 파일 수정 시간을 비교하는 함수 작성 2017202042 성도형 작
 void timecmp() {
+	// 각 파일의 시, 분, 초 정보 추출
+	time1 = localtime(&stat1.st_mtime);
+	int t1_hour = time1->tm_hour, t1_min = time1->tm_min, t1_sec = time1->tm_sec;
+	time2 = localtime(&stat2.st_mtime);
+	int t2_hour = time2->tm_hour, t2_min = time2->tm_min, t2_sec = time2->tm_sec;
+
+	printf("time compare\n");
+	// 시간 비교
+	if (t1_hour < t2_hour || (t1_hour == t2_hour && (t1_min < t2_min || (t1_min == t2_min && t1_sec < t2_sec)))) {
+	    printf("text1 is early\n\n");
+	}
+	else if (t1_hour > t2_hour || (t1_hour == t2_hour && (t1_min > t2_min || (t1_min == t2_min && t1_sec > t2_sec)))) {
+	    printf("text2 is early\n\n");
+	}
+	else {
+ 	   printf("same time\n\n");
+}
 
 }
